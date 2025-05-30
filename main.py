@@ -1,15 +1,15 @@
 import os
 from dotenv import load_dotenv
 import logging
-from agents.mga_analyst import MGAAnalyst
-from agents.underwriter import Underwriter
-from agents.policy_manager import PolicyManager
-from agents.risk_exposure import RiskExposure
-from agents.esg_compliance import ESGCompliance
+from mga_analyst import MGAAnalyst
+from underwriter import Underwriter
+from policy_manager import PolicyManager
+from risk_exposure import RiskExposure
+from esg_compliance import ESGCompliance
 from utils.document_processor import DocumentProcessor
 from utils.input_validator import InputValidator
 from utils.api_client import APIClient
-from ui.gradio_interface import create_ui
+from gradio_interface import create_ui
 
 # Nalaganje okoljskih spremenljivk
 load_dotenv()
@@ -42,9 +42,24 @@ async def main():
         )
         
         # Zagon strežnika
+        server_name = os.getenv("GRADIO_SERVER_NAME", "0.0.0.0")
+        try:
+            server_port_str = os.getenv("GRADIO_SERVER_PORT")
+            if server_port_str is not None:
+                server_port = int(server_port_str)
+            else:
+                server_port = 7860
+                logger.info("GRADIO_SERVER_PORT not set, using default port 7860.")
+        except ValueError:
+            server_port = 7860
+            logger.warning(
+                f"Invalid value for GRADIO_SERVER_PORT: '{os.getenv('GRADIO_SERVER_PORT')}'. "
+                "Using default port 7860."
+            )
+        
         await app.launch(
-            server_name=os.getenv("GRADIO_SERVER_NAME"),
-            server_port=int(os.getenv("GRADIO_SERVER_PORT")),
+            server_name=server_name,
+            server_port=server_port,
             share=True,
             debug=True
         )
