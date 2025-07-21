@@ -1,7 +1,7 @@
 # Insur.Cap - Avtonomni InsurTech Sistem
 
 ## 🎯 O projektu
-Insur.Cap je napreden sistem za avtomatizacijo zavarovalniških procesov, ki uporablja umetno inteligenco in strojno učenje za analizo tveganj, ocenjevanje polic in upravljanje zavarovalniških produktov.
+Insur.Cap je napreden sistem za avtomatizacijo zavarovalniških procesov s poudarkom na trajnostnih praksah.
 
 ## 🚀 Ključne funkcionalnosti
 
@@ -35,14 +35,21 @@ Insur.Cap je napreden sistem za avtomatizacijo zavarovalniških procesov, ki upo
 - Integracija z vremenskimi podatki
 - Predlogi za trajnostno poslovanje
 
+### 6. Orodje za sledenje ogljičnemu odtisu
+- Izračun osebnega ogljičnega odtisa
+- Shranjevanje in prikaz napredka preko Supabase
+- Preprosto vodenje izzivov in nagrajevanje
+
 ## 💻 Tehnične specifikacije
 - Python 3.8+
 - Gradio UI
 - Asyncio za asinhrono delovanje
 - Integracija z zunanjimi API-ji (Climatiq, Weather API, Google API)
 - Beleženje dogodkov (logging)
-- Podatkovna baza PostgreSQL
+- Podatkovna baza PostgreSQL/Supabase
 
 ## 🛠️ Namestitev in zagon
-
-1. Kloniranje repozitorija: 
+1. Kloniraj repozitorij
+2. Namesti odvisnosti z `pip install -r requirements.txt`
+3. Nastavi okoljske spremenljivke za Supabase in druge API ključe
+4. Zaženi glavno aplikacijo z `python main.py`
